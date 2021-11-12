@@ -2,4 +2,4 @@ spring:
   application:
     name: plopp
 server:
-  port: 8080
+  port: ${PORT:8080}
