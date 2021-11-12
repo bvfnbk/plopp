@@ -8,5 +8,5 @@ Planning poker revisited.
 
 | Key           | Default | Comment                                   |
 | ---           | ---     | ---                                       |
-| `PORT`        | 8080    | Apparently the preferred means of Heroku. | 
+| `PORT`        | 8080    | Apparently the preferred means of Heroku. |
 | `SERVER_PORT` | 8080    | The actual _Spring_ property.             |
