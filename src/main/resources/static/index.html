@@ -3,8 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Plopp</title>
+  <link rel="stylesheet" href="styles/plopp.css" />
 </head>
 <body>
 <h1>Hello World</h1>
+<p>
+  <label for="name_field">Name:</label>
+  <input type="text" id="name_field">
+  <button id="call_hello">Submit</button>
+</p>
+<hr />
+<p>
+  <b>Response: </b> <span id="response"></span>
+</p>
+<script type="module">
+  import {hello} from './js/hello.js';
+
+  const field = document.getElementById('name_field');
+  const button = document.getElementById('call_hello');
+  const response = document.getElementById('response');
+
+  if (field === null || button === null || response === null) {
+    throw new Error('One of the required elements not found.');
+  }
+
+  button.onclick = async () => {
+    response.innerText = await hello(field.value);
+  };
+
+</script>
 </body>
 </html>
