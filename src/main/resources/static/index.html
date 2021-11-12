@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Plopp</title>
-  <link rel="stylesheet" href="styles/plopp.css" />
+  <link rel="stylesheet" href="styles/plopp.css"/>
 </head>
 <body>
 <h1>Hello World</h1>
@@ -12,24 +12,72 @@
   <input type="text" id="name_field">
   <button id="call_hello">Submit</button>
 </p>
-<hr />
+<hr/>
+<p>
+  <label for="message_field">Message:</label>
+  <input type="text" id="message_field">
+  <button id="call_send">Send</button>
+</p>
+<hr/>
 <p>
   <b>Response: </b> <span id="response"></span>
 </p>
+<hr/>
+<div id="response_messages">
+
+</div>
 <script type="module">
   import {hello} from './js/hello.js';
+  import {PloppSocket} from './js/PloppSocket.js';
 
-  const field = document.getElementById('name_field');
-  const button = document.getElementById('call_hello');
-  const response = document.getElementById('response');
+  const nameInput = document.getElementById('name_field');
+  const fetchHello = document.getElementById('call_hello');
+  const helloResponse = document.getElementById('response');
+  const messageInput = document.getElementById('message_field');
+  const sendButton = document.getElementById('call_send');
+  const messages = document.getElementById('response_messages');
 
-  if (field === null || button === null || response === null) {
+  if (
+    nameInput === null ||
+    fetchHello === null ||
+    helloResponse === null ||
+    messageInput === null ||
+    sendButton === null ||
+    messages === null
+  ) {
     throw new Error('One of the required elements not found.');
   }
 
-  button.onclick = async () => {
-    response.innerText = await hello(field.value);
+  function appendMessage(direction, message) {
+    messages.innerHTML += `${direction} ${message}<br/>`;
+  }
+
+  function sendMessage(message) {
+    appendMessage('&rarr;', message);
+  }
+
+  function receiveMessage(message) {
+   appendMessage('&larr;', message);
+  }
+
+  const socket = new PloppSocket(location.protocol, location.hostname, location.port, '/events');
+
+
+  socket.addListener(receiveMessage);
+
+  fetchHello.onclick = async () => {
+    helloResponse.innerText = await hello(nameInput.value);
   };
+
+  sendButton.onclick = async () => {
+    if (socket.isConnected()) {
+      const message = messageInput.value;
+      socket.send(message);
+      sendMessage(message)
+    } else {
+      console.warn('Socket not connected.');
+    }
+  }
 
 </script>
 </body>
