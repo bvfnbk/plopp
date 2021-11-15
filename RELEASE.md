@@ -2,6 +2,7 @@
 
 ## 0.0.1 (Current)
 
+* #11 : Enables routing (to create a single page application)
 * #5 : Adds support for asynchronous messages.
 * #6 : Adds CI support (building & running tests).
 * #3 : Simple JavaScript module (use the backend).
