@@ -1,1 +1,1 @@
-web: ./service/build/install/plopp/bin/plopp
+web: ./service/build/install/service/bin/service

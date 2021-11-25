@@ -2,6 +2,7 @@
 
 ## 0.0.1 (Current)
 
+* [#34](../../issues/34): Fixes path to executable in `Procfile`.
 * [#30](../../issues/30): Moves service to own module.
 * [#29](../../issues/29): Switches framework from _Spring Boot_ to _Ktor_
 * [#11](../../issues/11): Enables routing (to create a single page application)
