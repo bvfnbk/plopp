@@ -29,3 +29,8 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
+
+// cf. https://ktor.io/docs/heroku.html
+tasks.create("stage") {
+    dependsOn("installDist")
+}
