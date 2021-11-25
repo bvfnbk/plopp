@@ -2,6 +2,7 @@
 
 ## 0.0.1 (Current)
 
+* [#29](../../issues/29): Switches framework from _Spring Boot_ to _Ktor_
 * [#11](../../issues/11): Enables routing (to create a single page application)
 * [#5](../../issues/5): Adds support for asynchronous messages.
 * [#6](../../issues/6): Adds CI support (building & running tests).

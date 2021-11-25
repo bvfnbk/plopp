@@ -1,1 +1,1 @@
-web: java -jar build/libs/plopp-0.0.1.jar
+web: ./build/install/plopp/bin/plopp

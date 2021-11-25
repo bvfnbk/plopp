@@ -8,8 +8,9 @@ import {Router} from './routing/Router.js';
 
 if (!Object.prototype.hasOwnProperty.call(window, '$plopp')) {
   window.$plopp = {
-    events: new EventBus(),
-    socket: new PloppSocket(location.protocol, location.hostname, location.port, '/events')
+    events: new EventBus()
+    // Socket left out; will be re-enabled as soon as Ktor integration is done...
+    // socket: new PloppSocket(location.protocol, location.hostname, location.port, '/events')
   };
 } else {
   console.log('$plopp already set up.');
