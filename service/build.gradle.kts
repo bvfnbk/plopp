@@ -17,6 +17,11 @@ repositories {
     mavenCentral()
 }
 
+val browserDist by configurations.creating {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+}
+
 dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-server-host-common:$ktor_version")
@@ -27,9 +32,22 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    browserDist(
+        project(
+            mapOf(
+                "path" to ":client",
+                "configuration" to "browserDist"
+            )
+        )
+    )
 }
 
 // cf. https://ktor.io/docs/heroku.html
 tasks.create("stage") {
     dependsOn("installDist")
+}
+
+tasks.withType<Copy>().named("processResources") {
+    from(browserDist)
 }
