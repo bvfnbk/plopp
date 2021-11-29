@@ -7,7 +7,8 @@ repositories {
 }
 
 kotlin {
-    js(LEGACY) {
+    // LEGACY vs. IR
+    js(IR) {
         binaries.executable()
         browser {
             commonWebpackConfig {

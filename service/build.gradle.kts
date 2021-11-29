@@ -49,5 +49,7 @@ tasks.create("stage") {
 }
 
 tasks.withType<Copy>().named("processResources") {
-    from(browserDist)
+    from(browserDist) {
+        into("static")
+    }
 }
