@@ -2,6 +2,7 @@
 
 ## 0.0.1 (Current)
 
+* [#15](../../issues/15): Defines application/navigation bar.
 * [#31](../../issues/31): Moves front-end to own module.
 * [#34](../../issues/34): Fixes path to executable in `Procfile`.
 * [#30](../../issues/30): Moves service to own module.
